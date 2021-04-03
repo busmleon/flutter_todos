@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_todos/core/error/abstract.error.dart';
-import 'package:flutter_todos/core/error/null.error.dart';
-import 'package:flutter_todos/core/model/todo.list.model.dart';
-import 'package:flutter_todos/core/model/todo.model.dart';
+import 'package:flutter_todos/core/errors/abstract.error.dart';
+import 'package:flutter_todos/core/errors/null.error.dart';
+import 'package:flutter_todos/core/models/todo.list.model.dart';
+import 'package:flutter_todos/core/models/todo.model.dart';
 import 'package:flutter_todos/features/todos/get/data-source/abstract.get.todos.data.source.dart';
 import 'package:flutter_todos/features/todos/get/repository/abstract.get.todos.repository.dart';
 import 'package:flutter_todos/features/todos/get/repository/get.todos.repository.dart';
@@ -17,7 +17,7 @@ class MockGetTodosDataSource extends Mock
 void main() {
   AbstractGetTodosUseCase useCase;
   AbstractGetTodosRepository repository;
-  MockGetTodosDataSource dataSource;
+  AbstractGetTodosDataSource dataSource;
   TodoListModel fixture;
 
   setUp(() {

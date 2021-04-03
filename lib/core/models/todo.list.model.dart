@@ -7,9 +7,8 @@ class TodoListModel extends AbstractModel {
   final List<TodoModel> items;
 
   const TodoListModel({
-    @required List<TodoModel> items,
-  })  : assert(items != null),
-        this.items = items;
+    @required this.items,
+  }) : assert(items != null);
 
   @override
   List<Object> get props => [this.items];

@@ -7,11 +7,9 @@ class TodoModel extends AbstractModel {
   final String description;
 
   const TodoModel({
-    int id,
-    @required String description,
-  })  : assert(description != null),
-        this.id = id,
-        this.description = description;
+    this.id,
+    @required this.description,
+  }) : assert(description != null);
 
   @override
   List<Object> get props => [this.id, this.description];

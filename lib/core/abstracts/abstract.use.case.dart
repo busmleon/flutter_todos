@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import 'error/abstract.error.dart';
-import 'model/abstract.model.dart';
+import '../errors/abstract.error.dart';
+import '../models/abstract.model.dart';
 
 abstract class AbstractUseCase<I extends AbstractModel,
     O extends Future<Either<AbstractError, AbstractModel>>> {

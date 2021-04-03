@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/abstract.repository.dart';
-import '../../../../core/error/abstract.error.dart';
-import '../../../../core/model/todo.list.model.dart';
+import '../../../../core/abstracts/abstract.repository.dart';
+import '../../../../core/errors/abstract.error.dart';
+import '../../../../core/models/todo.list.model.dart';
 
 abstract class AbstractGetTodosRepository extends AbstractRepository {
   Future<Either<AbstractError, TodoListModel>> getTodos();
