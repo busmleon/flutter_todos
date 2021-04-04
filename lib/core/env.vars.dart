@@ -1,1 +1,1 @@
-const MOCK_BACKEND_URL = 'http://localhost:3000/todos';
+const FIRESTORE_COLLECTION_TODOS = 'todos';
