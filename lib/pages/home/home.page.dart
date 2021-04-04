@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../core/localizator.dart';
 import '../../states/home/home.page.bloc.dart';
 import 'widgets/my.circular.progress.indicator.widget.dart';
 import 'widgets/my.elevated.button.dart';
@@ -13,33 +14,43 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomePage'),
+        title: Text(Localizator.of(context).translate('home_page_title')),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            BlocBuilder<HomePageBloc, HomePageState>(
-              builder: (context, state) {
-                if (state is HomePageGetTodosLoading) {
-                  return MyCircularProgressIndicatorWidget(
-                      text: 'Getting Todos...');
-                }
-                if (state is HomePageGetTodosLoaded) {
-                  return TodoListWidget(todos: state.todos);
-                }
-                if (state is HomePageGetTodosError) {
-                  return Text('Error loading todos');
-                  //TODO: snackbar
-                }
-                return Container();
-              },
-            ),
-            MyElevatedButton(
-              onPressed: () => getTodos(context),
-              text: 'Get Todos',
-            ),
-          ],
+      body: BlocListener<HomePageBloc, HomePageState>(
+        listener: (context, state) {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          if (state is HomePageGetTodosError) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(Localizator.of(context)
+                      .translate('home_page_getting_todos_failed') +
+                  ': ${state.error.message}'),
+            ));
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              BlocBuilder<HomePageBloc, HomePageState>(
+                builder: (context, state) {
+                  if (state is HomePageGetTodosLoading) {
+                    return MyCircularProgressIndicatorWidget(
+                        text: Localizator.of(context)
+                            .translate('home_page_getting_todos'));
+                  }
+                  if (state is HomePageGetTodosLoaded) {
+                    return TodoListWidget(todos: state.todos);
+                  }
+                  return Container();
+                },
+              ),
+              MyElevatedButton(
+                onPressed: () => getTodos(context),
+                text: Localizator.of(context)
+                    .translate('home_page_get_todos_button'),
+              ),
+            ],
+          ),
         ),
       ),
     );

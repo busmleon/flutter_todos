@@ -15,7 +15,9 @@ class TodoListWidget extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: todos.items.length,
-      itemBuilder: (_, index) => Text(todos.items.elementAt(index).description),
+      itemBuilder: (_, index) => Text(todos.items.elementAt(index).id +
+          ': ' +
+          todos.items.elementAt(index).description),
     );
   }
 }

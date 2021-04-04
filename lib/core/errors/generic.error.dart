@@ -2,7 +2,7 @@ import 'abstract.error.dart';
 
 class GenericError extends AbstractError {
   const GenericError({
-    String message,
+    String message = '',
   }) : super(message: message);
 
   @override
