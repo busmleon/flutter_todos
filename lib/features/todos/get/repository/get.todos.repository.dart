@@ -16,9 +16,9 @@ class GetTodosRepository implements AbstractGetTodosRepository {
   @override
   Future<Either<AbstractError, TodoListModel>> getTodos() async {
     try {
-      final todos = await this.dataSource.getTodos();
-      if (todos == null) throw Error();
-      return Right(await this.dataSource.getTodos());
+      final todoListModel = await this.dataSource.getTodos();
+      if (todoListModel == null) throw Error();
+      return Right(todoListModel);
     } on AbstractError catch (error) {
       return Left(error);
     } catch (_) {

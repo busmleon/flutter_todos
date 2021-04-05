@@ -1,7 +1,7 @@
 {
   "home_page_title": "Startseite",
   "home_page_getting_todos": "Lade Todos...",
-  "home_page_getting_todos_failed": "Fehler beim Laden der Todos",
+  "home_page_getting_todos_failed": "Fehler beim Laden der Todos.",
   "home_page_get_todos_button": "Todos laden",
   "error_route_title": "Falsche Route",
   "error_route_text": "Beim Navigieren auf eine Seite ist ein Fehler aufgetreten."

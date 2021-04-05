@@ -14,9 +14,11 @@ class GetTodosDataSource implements AbstractGetTodosDataSource {
 
   @override
   Future<TodoListModel> getTodos() async {
-    final documents =
-        (await this.firestore.collection(FIRESTORE_COLLECTION_TODOS).get())
-            .docs;
+    final documents = (await this
+            .firestore
+            .collection(FIRESTORE_COLLECTION_TODOS)
+            .get())
+        .docs; //! returns empty list if collection or documents could not been found
     return TodoListModel(
         items: documents
             .map<TodoModel>(

@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_todos/core/errors/abstract.error.dart';
 import 'package:flutter_todos/core/errors/generic.error.dart';
 import 'package:flutter_todos/core/models/todo.list.model.dart';
 import 'package:flutter_todos/core/models/todo.model.dart';
@@ -20,12 +19,16 @@ void main() {
   AbstractGetTodosRepository repository;
   AbstractGetTodosDataSource dataSource;
   TodoListModel fixture;
+  TodoListModel emptyFixture;
 
   setUp(() {
     fixture = const TodoListModel(
       items: [
         TodoModel(id: '1', description: 'Todo 1'),
       ],
+    );
+    emptyFixture = const TodoListModel(
+      items: [],
     );
     dataSource = MockGetTodosDataSource();
     repository = GetTodosRepository(dataSource: dataSource);
@@ -39,17 +42,24 @@ void main() {
     verify(dataSource.getTodos());
   });
 
-  test('should get GenericError if fetching todos returns null', () async {
-    when(dataSource.getTodos()).thenAnswer((_) async => null);
+  test('should get empty todoListModel if fetched todos are empty', () async {
+    when(dataSource.getTodos()).thenAnswer((_) async => emptyFixture);
     final result = await useCase();
-    result.fold((l) => expect(l, isA<GenericError>()), (r) => null);
+    expect(result, Right(emptyFixture));
     verify(dataSource.getTodos());
   });
 
-  test('should get AbstractError if fetching todos fails', () async {
+  test('should get GenericError if fetching todos fails in general', () async {
     when(dataSource.getTodos()).thenThrow(() => Exception());
     final result = await useCase();
-    result.fold((l) => expect(l, isA<AbstractError>()), (r) => null);
+    expect(result, Left(GenericError()));
+    verify(dataSource.getTodos());
+  });
+
+  test('should get GenericError if fetching todos returns null', () async {
+    when(dataSource.getTodos()).thenAnswer((_) async => null);
+    final result = await useCase();
+    expect(result, Left(GenericError()));
     verify(dataSource.getTodos());
   });
 }

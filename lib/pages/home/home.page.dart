@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(Localizator.of(context)
                       .translate('home_page_getting_todos_failed') +
-                  ': ${state.error.message}'),
+                  ' ${state.error.message}'),
             ));
           }
         },
