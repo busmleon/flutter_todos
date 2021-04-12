@@ -14,7 +14,6 @@ class GetTodosUseCase extends AbstractGetTodosUseCase {
       : assert(repository != null);
 
   @override
-  Future<Either<AbstractError, TodoListModel>> call({AbstractModel param}) {
-    return this.repository.getTodos();
-  }
+  Future<Either<AbstractError, TodoListModel>> call({AbstractModel param}) =>
+      this.repository.getTodos();
 }
