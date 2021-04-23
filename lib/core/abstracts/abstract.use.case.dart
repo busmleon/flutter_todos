@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
-import '../errors/abstract.error.dart';
+import '../errors.dart';
 import '../models/abstract.model.dart';
 
 @immutable

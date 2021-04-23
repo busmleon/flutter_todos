@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../entities/todo.entity.dart';
 import 'package:meta/meta.dart';
 
-import 'abstract.model.dart';
+import '../../../../core/models/abstract.model.dart';
 
 class TodoModel extends AbstractModel {
   final String id;
@@ -17,6 +18,8 @@ class TodoModel extends AbstractModel {
         id: document.id,
         description: document.data()['description'] ?? '',
       );
+  factory TodoModel.fromEntity(TodoEntity todoEntity) =>
+      TodoModel(id: todoEntity.id, description: todoEntity.description);
 
   @override
   List<Object> get props => [this.id, this.description];

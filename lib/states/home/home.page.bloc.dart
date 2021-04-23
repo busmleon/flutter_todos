@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import '../../features/todos/get/entities/todo.list.entity.dart';
 
-import '../../core/errors/abstract.error.dart';
-import '../../core/models/todo.list.model.dart';
+import '../../core/errors.dart';
 import '../../features/todos/get/use-case/abstract.get.todos.use.case.dart';
 
 part 'home.page.event.dart';

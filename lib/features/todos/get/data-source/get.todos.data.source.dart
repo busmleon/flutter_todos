@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/env.vars.dart';
-import '../../../../core/models/todo.list.model.dart';
-import '../../../../core/models/todo.model.dart';
+import '../../../../core/constants.dart';
+import '../models/todo.list.model.dart';
+import '../models/todo.model.dart';
 import 'abstract.get.todos.data.source.dart';
 
-class GetTodosDataSource implements AbstractGetTodosDataSource {
+class GetTodosDataSource extends AbstractGetTodosDataSource {
   final FirebaseFirestore firestore;
 
   const GetTodosDataSource({@required this.firestore})

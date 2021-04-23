@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/models/todo.list.model.dart';
+import '../../../features/todos/get/entities/todo.list.entity.dart';
 
 class TodoListWidget extends StatelessWidget {
-  final TodoListModel todos;
+  final TodoListEntity todos;
   const TodoListWidget({
     @required this.todos,
     Key key,

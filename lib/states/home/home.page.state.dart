@@ -19,7 +19,7 @@ class HomePageGetTodosLoading extends HomePageState {
 }
 
 class HomePageGetTodosLoaded extends HomePageState {
-  final TodoListModel todos;
+  final TodoListEntity todos;
   const HomePageGetTodosLoaded({@required this.todos}) : assert(todos != null);
 
   @override

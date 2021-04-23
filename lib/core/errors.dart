@@ -6,3 +6,12 @@ abstract class AbstractError extends Equatable {
 
   const AbstractError({@required this.message}) : assert(message != null);
 }
+
+class DataSourceError extends AbstractError {
+  const DataSourceError({
+    String message = 'Something went wrong calling the data source.',
+  }) : super(message: message);
+
+  @override
+  List<Object> get props => [this.message];
+}
