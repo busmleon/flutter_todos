@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
+import '../../../../core/entities/abstract.entity.dart';
 import '../entities/todo.list.entity.dart';
 
 import '../../../../core/abstracts/abstract.use.case.dart';
 import '../../../../core/errors.dart';
-import '../../../../core/models/abstract.model.dart';
 
-abstract class AbstractGetTodosUseCase extends AbstractUseCase<AbstractModel,
+abstract class AbstractGetTodosUseCase extends AbstractUseCase<AbstractEntity,
     Future<Either<AbstractError, TodoListEntity>>> {
   const AbstractGetTodosUseCase();
-  Future<Either<AbstractError, TodoListEntity>> call({AbstractModel param});
+  Future<Either<AbstractError, TodoListEntity>> call({AbstractEntity param});
 }

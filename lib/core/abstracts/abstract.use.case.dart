@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import '../entities/abstract.entity.dart';
 
 import '../errors.dart';
-import '../models/abstract.model.dart';
 
 @immutable
-abstract class AbstractUseCase<I extends AbstractModel,
-    O extends Future<Either<AbstractError, AbstractModel>>> {
+abstract class AbstractUseCase<I extends AbstractEntity,
+    O extends Future<Either<AbstractError, AbstractEntity>>> {
   const AbstractUseCase();
 
   O call({I param});
