@@ -6,7 +6,7 @@ import 'core/dependency.injector.dart' as injector;
 import 'core/localizator.dart';
 import 'core/router.dart';
 
-Future<void> main() async {
+void main() async {
   injector.init();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
