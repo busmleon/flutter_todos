@@ -7,7 +7,7 @@ import 'package:meta/meta.dart';
 import '../repository/abstract.get.todos.repository.dart';
 import 'abstract.get.todos.use.case.dart';
 
-class GetTodosUseCase extends AbstractGetTodosUseCase {
+class GetTodosUseCase implements AbstractGetTodosUseCase {
   final AbstractGetTodosRepository repository;
 
   const GetTodosUseCase({@required this.repository})

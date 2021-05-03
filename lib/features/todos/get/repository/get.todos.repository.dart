@@ -5,7 +5,7 @@ import '../../../../core/errors.dart';
 import '../data-source/abstract.get.todos.data.source.dart';
 import 'abstract.get.todos.repository.dart';
 
-class GetTodosRepository extends AbstractGetTodosRepository {
+class GetTodosRepository implements AbstractGetTodosRepository {
   final AbstractGetTodosDataSource dataSource;
 
   const GetTodosRepository({@required this.dataSource})

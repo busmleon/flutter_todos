@@ -6,7 +6,7 @@ import '../models/todo.list.model.dart';
 import '../models/todo.model.dart';
 import 'abstract.get.todos.data.source.dart';
 
-class GetTodosDataSource extends AbstractGetTodosDataSource {
+class GetTodosDataSource implements AbstractGetTodosDataSource {
   final FirebaseFirestore firestore;
 
   const GetTodosDataSource({@required this.firestore})
