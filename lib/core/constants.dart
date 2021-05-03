@@ -1,1 +1,3 @@
-const FIRESTORE_COLLECTION_TODOS = 'todos';
+class Constants {
+  static const FIRESTORE_COLLECTION_TODOS = 'todos';
+}
