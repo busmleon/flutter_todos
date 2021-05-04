@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "nash.awesome-flutter-snippets",
+        "felixangelov.bloc",
+        "streetsidesoftware.code-spell-checker",
+        "dart-code.dart-code",
+        "luanpotter.dart-import",
+        "dart-code.flutter",
+        "jeroen-meijer.pubspec-assist"
+    ]
+}
