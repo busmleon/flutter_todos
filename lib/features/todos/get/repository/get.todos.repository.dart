@@ -20,8 +20,8 @@ class GetTodosRepository implements AbstractGetTodosRepository {
       return Right(TodoListEntity.fromModel(todoListModel));
     } on AbstractError catch (error) {
       return Left(error);
-    } catch (_) {
-      return Left(const DataSourceError());
+    } catch (error) {
+      return Left(DataSourceError(message: error.toString()));
     }
   }
 }

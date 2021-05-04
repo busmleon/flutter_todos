@@ -19,10 +19,12 @@ class GetTodosDataSource implements AbstractGetTodosDataSource {
             .collection(Constants.FIRESTORE_COLLECTION_TODOS)
             .get())
         .docs; //! returns empty list if collection or documents could not been found
-    return TodoListModel(
-        items: documents
-            .map<TodoModel>(
-                (document) => TodoModel.fromFirestoreDocument(document))
-            .toList());
+    return Future.delayed(
+        const Duration(seconds: 1),
+        () => TodoListModel(
+            items: documents
+                .map<TodoModel>(
+                    (document) => TodoModel.fromFirestoreDocument(document))
+                .toList()));
   }
 }
