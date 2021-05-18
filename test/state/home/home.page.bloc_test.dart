@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_todos/core/errors.dart';
-import 'package:flutter_todos/features/todos/get/entities/todo.entity.dart';
+import 'package:flutter_todos/features/todos/entities/todo.entity.dart';
 import 'package:flutter_todos/features/todos/get/entities/todo.list.entity.dart';
 import 'package:flutter_todos/features/todos/get/use-case/abstract.get.todos.use.case.dart';
 import 'package:flutter_todos/states/home/home.page.bloc.dart';

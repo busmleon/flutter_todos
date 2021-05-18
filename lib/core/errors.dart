@@ -15,3 +15,12 @@ class DataSourceError extends AbstractError {
   @override
   List<Object> get props => [this.message];
 }
+
+class InvalidInputError extends AbstractError {
+  const InvalidInputError({
+    String message = 'Invalid input.',
+  }) : super(message: message);
+
+  @override
+  List<Object> get props => [this.message];
+}

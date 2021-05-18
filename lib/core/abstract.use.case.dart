@@ -8,5 +8,6 @@ abstract class AbstractUseCase<I extends AbstractEntity,
     O extends Future<Either<AbstractError, AbstractEntity>>> {
   const AbstractUseCase();
 
+  // O Rückgabewert (Output) - I (Input) Eingabewert
   O call({I param});
 }

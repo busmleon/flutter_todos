@@ -4,7 +4,7 @@ import 'package:flutter_todos/core/errors.dart';
 import 'package:flutter_todos/features/todos/get/data-source/abstract.get.todos.data.source.dart';
 import 'package:flutter_todos/features/todos/get/entities/todo.list.entity.dart';
 import 'package:flutter_todos/features/todos/get/models/todo.list.model.dart';
-import 'package:flutter_todos/features/todos/get/models/todo.model.dart';
+import 'package:flutter_todos/features/todos/models/todo.model.dart';
 import 'package:flutter_todos/features/todos/get/repository/abstract.get.todos.repository.dart';
 import 'package:flutter_todos/features/todos/get/repository/get.todos.repository.dart';
 import 'package:flutter_todos/features/todos/get/use-case/abstract.get.todos.use.case.dart';
