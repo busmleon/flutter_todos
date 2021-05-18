@@ -9,8 +9,10 @@ abstract class AbstractError extends Equatable {
 
 class DataSourceError extends AbstractError {
   const DataSourceError({
-    String message = 'Something went wrong calling the data source.',
-  }) : super(message: message);
+    String message,
+  }) : super(
+            message:
+                message ?? 'Something went wrong calling the data source.');
 
   @override
   List<Object> get props => [this.message];

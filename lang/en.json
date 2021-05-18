@@ -1,6 +1,5 @@
 {
   "home_page_title": "Home",
-  "home_page_getting_todos": "Getting Todos...",
   "home_page_getting_todos_failed": "Getting Todos failed.",
   "home_page_get_todos_button": "Get Todos",
   "error_route_title": "Wrong Route",

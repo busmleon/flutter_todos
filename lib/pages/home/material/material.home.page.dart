@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../core/localizator.dart';
-import '../../states/home/home.page.bloc.dart';
+import '../../../core/localizator.dart';
+import '../../../states/home/home.page.bloc.dart';
 import 'widgets/my.circular.progress.indicator.widget.dart';
 import 'widgets/my.elevated.button.dart';
-import 'widgets/todo.list.widget.dart';
+import '../widgets/todo.list.widget.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+class MaterialHomePage extends StatelessWidget {
+  const MaterialHomePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(Localizator.of(context)
                       .translate('home_page_getting_todos_failed') +
-                  ' ${state.error.message}'),
+                  ' (${state.error.message})'),
             ));
           }
         },
@@ -34,9 +34,7 @@ class HomePage extends StatelessWidget {
               BlocBuilder<HomePageBloc, HomePageState>(
                 builder: (context, state) {
                   if (state is HomePageGetTodosLoading) {
-                    return MyCircularProgressIndicatorWidget(
-                        text: Localizator.of(context)
-                            .translate('home_page_getting_todos'));
+                    return MyCircularProgressIndicatorWidget();
                   }
                   if (state is HomePageGetTodosLoaded) {
                     return TodoListWidget(todos: state.todos);
