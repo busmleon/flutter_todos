@@ -11,7 +11,7 @@ import 'package:flutter_todos/features/todos/get/use-case/abstract.get.todos.use
 import 'package:flutter_todos/features/todos/get/use-case/get.todos.use.case.dart';
 import 'package:mockito/mockito.dart';
 
-class MockGetTodosDataSource extends Mock
+class _MockGetTodosDataSource extends Mock
     implements AbstractGetTodosDataSource {}
 
 void main() {
@@ -20,7 +20,7 @@ void main() {
   AbstractGetTodosDataSource dataSource;
 
   setUp(() {
-    dataSource = MockGetTodosDataSource();
+    dataSource = _MockGetTodosDataSource();
     repository = GetTodosRepository(dataSource: dataSource);
     useCase = GetTodosUseCase(repository: repository);
   });
