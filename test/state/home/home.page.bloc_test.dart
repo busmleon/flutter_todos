@@ -7,7 +7,6 @@ import 'package:flutter_todos/features/todos/get/use-case/abstract.get.todos.use
 import 'package:flutter_todos/states/home/home.page.bloc.dart';
 import 'package:mockito/mockito.dart';
 
-// ignore: must_be_immutable
 class MockGetTodosUseCase extends Mock implements AbstractGetTodosUseCase {}
 
 void main() {
@@ -49,7 +48,6 @@ void main() {
       ];
       expectLater(bloc.stream, emitsInOrder(expected));
       bloc.add(const HomePageGetTodosEvent());
-      // verify(getTodosUseCase());
     });
 
     test(
