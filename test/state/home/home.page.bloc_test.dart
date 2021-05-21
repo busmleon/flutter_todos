@@ -7,18 +7,19 @@ import 'package:flutter_todos/features/todos/get/use-case/abstract.get.todos.use
 import 'package:flutter_todos/states/home/home.page.bloc.dart';
 import 'package:mockito/mockito.dart';
 
-class MockGetTodosUseCase extends Mock implements AbstractGetTodosUseCase {}
+class _MockGetTodosUseCase extends Mock implements AbstractGetTodosUseCase {}
 
 void main() {
   HomePageBloc bloc;
   AbstractGetTodosUseCase getTodosUseCase;
 
   setUp(() {
-    getTodosUseCase = MockGetTodosUseCase();
+    getTodosUseCase = _MockGetTodosUseCase();
     bloc = HomePageBloc(getTodosUseCase: getTodosUseCase);
   });
 
   test('initial state should be HomePageInitial', () {
+    //! assert
     expect(bloc.state, const HomePageInitial());
   });
 
@@ -32,34 +33,42 @@ void main() {
     });
 
     test('should get data from use case', () async {
+      //! arrange
       when(getTodosUseCase()).thenAnswer((_) async => Right(fixture));
+      //! act
       bloc.add(const HomePageGetTodosEvent());
+      //! assert
       await untilCalled(getTodosUseCase());
-      verify(getTodosUseCase());
     });
 
     test(
         'should emit [HomePageLoading, HomePageLoaded] when todos are gotten successfully',
         () {
+      //! arrange
       when(getTodosUseCase()).thenAnswer((_) async => Right(fixture));
       final expected = [
         const HomePageGetTodosLoading(),
         HomePageGetTodosLoaded(todos: fixture),
       ];
+      //! assert later
       expectLater(bloc.stream, emitsInOrder(expected));
+      //! act
       bloc.add(const HomePageGetTodosEvent());
     });
 
     test(
         'should emit [HomePageLoading, HomePageError] when getting todos fails',
         () {
+      //! arrange
       when(getTodosUseCase())
           .thenAnswer((_) async => Left(const DataSourceError()));
       final expected = const [
         HomePageGetTodosLoading(),
         HomePageGetTodosError(error: DataSourceError()),
       ];
+      //! assert later
       expectLater(bloc.stream, emitsInOrder(expected));
+      //! act
       bloc.add(const HomePageGetTodosEvent());
     });
   });
