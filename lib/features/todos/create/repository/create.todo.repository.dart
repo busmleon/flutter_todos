@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:meta/meta.dart';
 import 'package:flutter_todos/core/errors.dart';
 import 'package:flutter_todos/features/todos/create/data-source/abstract-create.todo.data.source.dart';
 import 'package:flutter_todos/features/todos/create/repository/abstract.create.todo.repository.dart';
@@ -16,7 +16,7 @@ class CreateTodoRepository implements AbstractCreateTodoRepository {
   Future<Either<AbstractError, TodoEntity>> createTodo(
       TodoEntity todoEntity) async {
     try {
-      if (todoEntity != null) {
+      if (todoEntity?.description != null) {
         final createTodoModel =
             await this.dataSource.createTodo(TodoModel.fromEntity(todoEntity));
         return Right(TodoEntity.fromModel(createTodoModel));
