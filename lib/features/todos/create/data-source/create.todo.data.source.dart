@@ -13,11 +13,10 @@ class CreateTodoDataSource implements AbstractCreateTodoDataSource {
 
   @override
   Future<TodoModel> createTodo(TodoModel todoModel) async {
-    DocumentReference docRef = await this
+    final docRef = await this
         .firestore
         .collection(Constants.FIRESTORE_COLLECTION_TODOS)
         .add(todoModel.toMap());
-
     return TodoModel(id: docRef.id, description: todoModel.description);
   }
 }
