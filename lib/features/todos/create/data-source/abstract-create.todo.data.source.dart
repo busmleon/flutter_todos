@@ -1,4 +1,4 @@
-import 'package:flutter_todos/features/todos/models/todo.model.dart';
+import '../../models/todo.model.dart';
 
 abstract class AbstractCreateTodoDataSource {
   const AbstractCreateTodoDataSource();

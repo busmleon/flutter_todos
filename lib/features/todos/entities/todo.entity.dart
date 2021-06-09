@@ -9,7 +9,7 @@ class TodoEntity extends AbstractEntity {
   const TodoEntity({
     this.id,
     @required this.description,
-  }) : assert(description != null);
+  });
 
   factory TodoEntity.fromModel(TodoModel todoModel) =>
       TodoEntity(id: todoModel.id, description: todoModel.description);

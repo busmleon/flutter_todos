@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
-import 'package:flutter_todos/core/errors.dart';
-import 'package:flutter_todos/features/todos/create/data-source/abstract-create.todo.data.source.dart';
-import 'package:flutter_todos/features/todos/create/repository/abstract.create.todo.repository.dart';
-import 'package:flutter_todos/features/todos/entities/todo.entity.dart';
-import 'package:flutter_todos/features/todos/models/todo.model.dart';
+import '../../../../core/errors.dart';
+import '../data-source/abstract-create.todo.data.source.dart';
+import 'abstract.create.todo.repository.dart';
+import '../../entities/todo.entity.dart';
+import '../../models/todo.model.dart';
 
 class CreateTodoRepository implements AbstractCreateTodoRepository {
   final AbstractCreateTodoDataSource dataSource;

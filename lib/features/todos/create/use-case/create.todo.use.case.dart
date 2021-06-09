@@ -1,9 +1,9 @@
 import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter_todos/core/errors.dart';
-import 'package:flutter_todos/features/todos/create/repository/abstract.create.todo.repository.dart';
-import 'package:flutter_todos/features/todos/create/use-case/abstract.create.todo.use.case.dart';
-import 'package:flutter_todos/features/todos/entities/todo.entity.dart';
+import '../../../../core/errors.dart';
+import '../repository/abstract.create.todo.repository.dart';
+import 'abstract.create.todo.use.case.dart';
+import '../../entities/todo.entity.dart';
 
 class CreateTodoUseCase implements AbstractCreateTodoUseCase {
   final AbstractCreateTodoRepository repository;

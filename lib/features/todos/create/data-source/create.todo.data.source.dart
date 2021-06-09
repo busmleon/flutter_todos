@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_todos/features/todos/create/data-source/abstract-create.todo.data.source.dart';
-import 'package:flutter_todos/features/todos/models/todo.model.dart';
+import 'abstract-create.todo.data.source.dart';
+import '../../models/todo.model.dart';
 
 import '../../../../core/constants.dart';
 

@@ -11,7 +11,7 @@ class TodoModel extends AbstractModel {
   const TodoModel({
     this.id,
     @required this.description,
-  }) : assert(description != null);
+  });
 
   Map<String, dynamic> toMap() {
     return {

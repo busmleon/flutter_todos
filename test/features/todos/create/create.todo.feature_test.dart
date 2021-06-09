@@ -37,39 +37,72 @@ void main() {
     verify(dataSource.createTodo(mockTodoModel));
     verifyNoMoreInteractions(dataSource);
   });
-//TODO: ab hier weiter
-  test('should create todoModel if TodoModel has no id', () async {
-    //! arrange
-    final fixture = TodoModel(description: 'Todo 1');
-    final mockTodoModel = const TodoModel(description: 'Todo 1');
 
-    when(dataSource.createTodo(mockTodoModel)).thenAnswer((_) async => fixture);
+  test('should return InvalidInputError when TodoEntity is null', () async {
+    //! act
+    final result = await useCase.call(param: null);
+    //! assert
+    expect(result.isLeft(), true);
+    result.fold((l) => expect(l, isA<InvalidInputError>()), (r) => null);
+  });
+
+  test('should return InvalidInputError if description is null', () async {
+    //! arrange
+    final fixture = const TodoEntity(description: null);
+    //! act
+    final result = await useCase.call(param: fixture);
+    //! assert
+    expect(result.isLeft(), true);
+    result.fold((l) => expect(l, isA<InvalidInputError>()), (r) => null);
+  });
+
+  test(
+      'should return a CreateTodoError when TodoModel gotten from the datasource is null',
+      () async {
+    //! arrange
+    final mockTodoModel = const TodoModel(description: 'Todo 1');
+    when(dataSource.createTodo(mockTodoModel)).thenAnswer((_) async => null);
     //! act
     final result = await useCase(param: TodoEntity.fromModel(mockTodoModel));
     //! assert
-    expect(result, Right(TodoEntity.fromModel(fixture)));
-    result.fold(
-        (l) => null, (r) => expect(r.description, mockTodoModel.description));
+    expect(result.isLeft(), true);
+    result.fold((l) => expect(l, isA<CreateTodoError>()), (r) => null);
     verify(dataSource.createTodo(mockTodoModel));
     verifyNoMoreInteractions(dataSource);
   });
 
-  // test('should create InvalidInputErro if description is null', () async {
-  //   //! arrange
-  //       // final mockTodoModel = const TodoModel(description: null);
-  //   // nicht notwendig da im repository abfangen
-  //   // when(dataSource.createTodo(any)).thenAnswer((_) async => null);
-  //   //! act
-  //   final result = await useCase();
-  //   //! assert
-  //   expect(result.isLeft(), true);
-  //   result.fold((l) => expect(l, isA<DataSourceError>()), (r) => null);
+  test(
+      'should return a CreateTodoError when TodoModel.id gotten from the datasource is null',
+      () async {
+    //! arrange
+    final fixture = const TodoModel(id: null, description: 'Todo 1');
+    final mockTodoModel = const TodoModel(description: 'Todo 1');
+    when(dataSource.createTodo(mockTodoModel)).thenAnswer((_) async => fixture);
+    //! act
+    final result = await useCase(param: TodoEntity.fromModel(mockTodoModel));
+    //! assert
+    expect(result.isLeft(), true);
+    result.fold((l) => expect(l, isA<CreateTodoError>()), (r) => null);
+    verify(dataSource.createTodo(mockTodoModel));
+    verifyNoMoreInteractions(dataSource);
+  });
 
-  //   // Das hier ist falsch
-  //   verify(dataSource.createTodo(null));
-  //   verifyNoMoreInteractions(dataSource);
-  // });
-//TODO: hier unten any verwenden?
+  test(
+      'should return a CreateTodoError when TodoModel.description gotten from the datasource is null',
+      () async {
+    //! arrange
+    final fixture = const TodoModel(id: '1', description: null);
+    final mockTodoModel = const TodoModel(description: 'Todo 1');
+    when(dataSource.createTodo(mockTodoModel)).thenAnswer((_) async => fixture);
+    //! act
+    final result = await useCase(param: TodoEntity.fromModel(mockTodoModel));
+    //! assert
+    expect(result.isLeft(), true);
+    result.fold((l) => expect(l, isA<CreateTodoError>()), (r) => null);
+    verify(dataSource.createTodo(mockTodoModel));
+    verifyNoMoreInteractions(dataSource);
+  });
+
   test('should get GenericError if creating a todo fails in general', () async {
     //! arrange
     final mockTodoModel = const TodoModel(description: 'Todo 1');

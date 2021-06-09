@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_todos/features/todos/models/todo.model.dart';
+import '../../models/todo.model.dart';
 import '../models/todo.list.model.dart';
 
 import 'abstract.get.todos.data.source.dart';
