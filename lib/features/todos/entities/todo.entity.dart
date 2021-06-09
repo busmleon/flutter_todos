@@ -15,5 +15,5 @@ class TodoEntity extends AbstractEntity {
       TodoEntity(id: todoModel.id, description: todoModel.description);
 
   @override
-  List<Object> get props => [this.id, this.description];
+  List<Object> get props => [this.id];
 }

@@ -19,7 +19,8 @@ class TodoModel extends AbstractModel {
     };
   }
 
-  factory TodoModel.fromFirestoreDocument(QueryDocumentSnapshot document) =>
+  factory TodoModel.fromFirestoreDocument(
+          QueryDocumentSnapshot<Map<String, dynamic>> document) =>
       TodoModel(
         id: document.id,
         description: document.data()['description'] ?? '',
@@ -29,5 +30,5 @@ class TodoModel extends AbstractModel {
       TodoModel(id: todoEntity.id, description: todoEntity.description);
 
   @override
-  List<Object> get props => [this.id, this.description];
+  List<Object> get props => [this.id];
 }
