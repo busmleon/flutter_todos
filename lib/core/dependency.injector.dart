@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import '../features/todos/get/data-source/mock.get.todos.data.source.dart';
 import '../features/todos/get/data-source/get.todos.data.source.dart';
 import 'package:get_it/get_it.dart';
 
@@ -23,8 +24,8 @@ Future<void> init() async {
       () => GetTodosRepository(dataSource: injector()));
   //* Data Source
   injector.registerLazySingleton<AbstractGetTodosDataSource>(
-      () => GetTodosDataSource(firestore: injector()));
-  //     () => MockGetTodosDataSource(firestore: injector()));
+      // () => GetTodosDataSource(firestore: injector()));
+      () => MockGetTodosDataSource());
   //* Firebase Firestore
   injector.registerLazySingleton<FirebaseFirestore>(
       () => FirebaseFirestore.instance);
