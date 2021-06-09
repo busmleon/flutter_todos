@@ -24,7 +24,11 @@ void main() {
     repository = GetTodosRepository(dataSource: dataSource);
     useCase = GetTodosUseCase(repository: repository);
   });
-
+  test('should have a use case, repository and data source', () {
+    expect(dataSource, isA<_MockGetTodosDataSource>());
+    expect(repository, isA<GetTodosRepository>());
+    expect(useCase, isA<GetTodosUseCase>());
+  });
   test('should get todos if fetching todos is successful', () async {
     //! arrange
     final fixture = const TodoListModel(
@@ -55,7 +59,7 @@ void main() {
     verifyNoMoreInteractions(dataSource);
   });
 
-  test('should get GenericError if fetching todos returns null', () async {
+  test('should get DataSourceError if fetching todos returns null', () async {
     //! arrange
     when(dataSource.getTodos()).thenAnswer((_) async => null);
     //! act
@@ -67,7 +71,8 @@ void main() {
     verifyNoMoreInteractions(dataSource);
   });
 
-  test('should get GenericError if fetching todos fails in general', () async {
+  test('should get DataSourceError if fetching todos fails in general',
+      () async {
     //! arrange
     when(dataSource.getTodos()).thenThrow(() => Exception());
     //! act
