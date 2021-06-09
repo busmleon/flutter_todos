@@ -30,5 +30,5 @@ class TodoModel extends AbstractModel {
       TodoModel(id: todoEntity.id, description: todoEntity.description);
 
   @override
-  List<Object> get props => [this.id];
+  List<Object> get props => [this.id, this.description];
 }

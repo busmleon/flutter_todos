@@ -61,10 +61,10 @@ void main() {
         () {
       //! arrange
       when(getTodosUseCase())
-          .thenAnswer((_) async => Left(const DataSourceError()));
+          .thenAnswer((_) async => Left(const GetTodosError()));
       final expected = const [
         HomePageGetTodosLoading(),
-        HomePageGetTodosError(error: DataSourceError()),
+        HomePageGetTodosError(error: GetTodosError()),
       ];
       //! assert later
       expectLater(bloc.stream, emitsInOrder(expected));

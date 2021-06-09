@@ -62,7 +62,7 @@ void main() {
     final result = await useCase();
     //! assert
     expect(result.isLeft(), true);
-    result.fold((l) => expect(l, isA<DataSourceError>()), (r) => null);
+    result.fold((l) => expect(l, isA<GetTodosError>()), (r) => null);
     verify(dataSource.getTodos());
     verifyNoMoreInteractions(dataSource);
   });
@@ -74,7 +74,7 @@ void main() {
     final result = await useCase();
     //! assert
     expect(result.isLeft(), true);
-    result.fold((l) => expect(l, isA<DataSourceError>()), (r) => null);
+    result.fold((l) => expect(l, isA<GetTodosError>()), (r) => null);
     verify(dataSource.getTodos());
     verifyNoMoreInteractions(dataSource);
   });

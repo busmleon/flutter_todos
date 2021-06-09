@@ -19,14 +19,18 @@ class CreateTodoRepository implements AbstractCreateTodoRepository {
       if (todoEntity?.description != null) {
         final createTodoModel =
             await this.dataSource.createTodo(TodoModel.fromEntity(todoEntity));
-        return Right(TodoEntity.fromModel(createTodoModel));
-      } else {
-        throw InvalidInputError(message: 'Invalid Todo Entity');
+        if (createTodoModel?.id != null &&
+            createTodoModel?.description != null) {
+          return Right(TodoEntity.fromModel(createTodoModel));
+        }
+        throw const CreateTodoError(
+            message: 'Invalid data gotten from the data source.');
       }
+      throw const InvalidInputError(message: 'Invalid Todo Entity');
     } on AbstractError catch (error) {
       return Left(error);
     } catch (_) {
-      return Left(const DataSourceError());
+      return Left(const CreateTodoError());
     }
   }
 }

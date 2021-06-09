@@ -25,23 +25,19 @@ void main() {
     useCase = CreateTodoUseCase(repository: repository);
   });
 
-  test('should get todos if creating todos was successful', () async {
+  test('should call the data source to create a todo', () async {
     //! arrange
     final fixture = const TodoModel(id: '1', description: 'Todo 1');
     final mockTodoModel = const TodoModel(description: 'Todo 1');
-
     when(dataSource.createTodo(mockTodoModel)).thenAnswer((_) async => fixture);
     //! act
     final result = await useCase(param: TodoEntity.fromModel(mockTodoModel));
-    print('Test result: $result');
     //! assert
     expect(result, Right(TodoEntity.fromModel(fixture)));
-    result.fold(
-        (l) => null, (r) => expect(r.description, mockTodoModel.description));
     verify(dataSource.createTodo(mockTodoModel));
     verifyNoMoreInteractions(dataSource);
   });
-
+//TODO: ab hier weiter
   test('should create todoModel if TodoModel has no id', () async {
     //! arrange
     final fixture = TodoModel(description: 'Todo 1');
@@ -82,7 +78,7 @@ void main() {
     final result = await useCase(param: TodoEntity.fromModel(mockTodoModel));
     //! assert
     expect(result.isLeft(), true);
-    result.fold((l) => expect(l, isA<DataSourceError>()), (r) => null);
+    result.fold((l) => expect(l, isA<CreateTodoError>()), (r) => null);
     verify(dataSource.createTodo(mockTodoModel));
     verifyNoMoreInteractions(dataSource);
   });
