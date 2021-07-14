@@ -2,6 +2,11 @@
   "home_page_title": "Home",
   "home_page_getting_todos_failed": "Getting Todos failed.",
   "home_page_get_todos_button": "Get Todos",
+  "create_page_title": "Create ToDo",
+  "create_page_creating_todo_error": "Creating Todo failed",
+  "create_page_creating_todo_succeeded": "Creating Todo succeeded",
+  "create_page_create_todo_button": "Create Todo",
+  "create_page_todo_hint_text": "Insert ToDo",
   "error_route_title": "Wrong Route",
   "error_route_text": "Something went wrong while routing to a different page."
 }
