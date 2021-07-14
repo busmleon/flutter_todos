@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_todos/pages/home/material/createPage/marterial.create.page.dart';
 
 import '../../../core/localizator.dart';
 import '../../../states/home/home.page.bloc.dart';
@@ -16,6 +17,12 @@ class MaterialHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(Localizator.of(context).translate('home_page_title')),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () =>
+            Navigator.pushNamed(context, MaterialCreatePage.routName),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: BlocListener<HomePageBloc, HomePageState>(
         listener: (context, state) {
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
