@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_todos/features/todos/create/use-case/abstract.create.todo.use.case.dart';
+import '../../features/todos/create/use-case/abstract.create.todo.use.case.dart';
 import '../../features/todos/entities/todo.entity.dart';
 import '../../core/errors.dart';
 part 'create.todo.page.event.dart';

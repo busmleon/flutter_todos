@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_todos/pages/create-todo/material/marterial.create.todo.page.dart';
-import 'package:flutter_todos/pages/widgets/material/my.circular.progress.indicator.widget.dart';
-import 'package:flutter_todos/pages/widgets/material/my.elevated.button.dart';
+import '../../widgets/material/my.circular.progress.indicator.widget.dart';
+import '../../widgets/material/my.elevated.button.dart';
 
 import '../../../core/localizator.dart';
 import '../../../states/home/home.page.bloc.dart';
@@ -20,8 +19,7 @@ class MaterialHomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () =>
-            Navigator.pushNamed(context, MaterialCreatePage.routName),
+        onPressed: () => Navigator.pushNamed(context, '/createPage'),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: BlocListener<HomePageBloc, HomePageState>(
