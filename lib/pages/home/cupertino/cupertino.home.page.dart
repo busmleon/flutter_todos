@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_todos/pages/widgets/cupertino/my.cupertino.activity.indicator.dart';
-import 'package:flutter_todos/pages/widgets/cupertino/my.cupertino.button.dart';
 
 import '../../../core/localizator.dart';
 import '../../../states/home/home.page.bloc.dart';
+import '../../widgets/cupertino/my.cupertino.activity.indicator.dart';
+import '../../widgets/cupertino/my.cupertino.button.dart';
 import '../widgets/todo.list.widget.dart';
 
 class CupertinoHomePage extends StatelessWidget {

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../entities/todo.entity.dart';
 import 'package:meta/meta.dart';
 
 import '../../../core/models/abstract.model.dart';
+import '../entities/todo.entity.dart';
 
 class TodoModel extends AbstractModel {
   final String id;
