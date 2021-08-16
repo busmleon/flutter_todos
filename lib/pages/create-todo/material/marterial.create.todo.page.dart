@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todos/core/localizator.dart';
 import 'package:flutter_todos/features/todos/entities/todo.entity.dart';
 import 'package:flutter_todos/features/todos/models/todo.model.dart';
-import 'package:flutter_todos/pages/home/material/widgets/my.circular.progress.indicator.widget.dart';
-import 'package:flutter_todos/pages/home/material/widgets/my.elevated.button.dart';
-import 'package:flutter_todos/states/create/create.page.bloc.dart';
+import 'package:flutter_todos/pages/widgets/material/my.circular.progress.indicator.widget.dart';
+import 'package:flutter_todos/pages/widgets/material/my.elevated.button.dart';
+import 'package:flutter_todos/states/create-todo/create.todo.page.bloc.dart';
 
 class MaterialCreatePage extends StatefulWidget {
   static const routName = '/createPage';
@@ -17,7 +17,7 @@ class MaterialCreatePage extends StatefulWidget {
 
 class _MaterialCreatePageState extends State<MaterialCreatePage> {
   TextEditingController createTodoController = new TextEditingController();
-  TodoModel todoModel;
+  TodoEntity todoEntity;
   @override
   void initState() {
     // TODO: implement initState
@@ -73,9 +73,9 @@ class _MaterialCreatePageState extends State<MaterialCreatePage> {
             ),
             MyElevatedButton(
               onPressed: () {
-                todoModel =
-                    new TodoModel(description: createTodoController.value.text);
-                createTodo(context, new TodoEntity.fromModel(todoModel));
+                todoEntity = new TodoEntity(
+                    description: createTodoController.value.text);
+                createTodo(context, todoEntity);
               },
               text: Localizator.of(context)
                   .translate('create_page_create_todo_button'),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_todos/pages/home/material/createPage/marterial.create.page.dart';
+import 'package:flutter_todos/pages/create-todo/material/marterial.create.todo.page.dart';
+import 'package:flutter_todos/pages/widgets/material/my.circular.progress.indicator.widget.dart';
+import 'package:flutter_todos/pages/widgets/material/my.elevated.button.dart';
 
 import '../../../core/localizator.dart';
 import '../../../states/home/home.page.bloc.dart';
-import 'widgets/my.circular.progress.indicator.widget.dart';
-import 'widgets/my.elevated.button.dart';
+
 import '../widgets/todo.list.widget.dart';
 
 class MaterialHomePage extends StatelessWidget {

@@ -6,8 +6,7 @@ import 'package:flutter_todos/features/todos/create/repository/abstract.create.t
 import 'package:flutter_todos/features/todos/create/repository/create.todo.repository.dart';
 import 'package:flutter_todos/features/todos/create/use-case/abstract.create.todo.use.case.dart';
 import 'package:flutter_todos/features/todos/create/use-case/create.todo.use.case.dart';
-import 'package:flutter_todos/states/create/create.page.bloc.dart';
-import '../features/todos/get/data-source/mock.get.todos.data.source.dart';
+import 'package:flutter_todos/states/create-todo/create.todo.page.bloc.dart';
 import '../features/todos/get/data-source/get.todos.data.source.dart';
 import 'package:get_it/get_it.dart';
 
