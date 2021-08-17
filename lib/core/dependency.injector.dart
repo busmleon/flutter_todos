@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import '../features/todos/create/data-source/abstract-create.todo.data.source.dart';
 import '../features/todos/create/data-source/create.todo.data.source.dart';
 import '../features/todos/create/repository/abstract.create.todo.repository.dart';
