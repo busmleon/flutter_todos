@@ -51,6 +51,8 @@ void main() {
         HomePageGetTodosLoaded(todos: fixture),
       ];
       //! assert later
+      print(
+          'Hier BlocStream ${expectLater(bloc.stream, emitsInOrder(expected))}');
       expectLater(bloc.stream, emitsInOrder(expected));
       //! act
       bloc.add(const HomePageGetTodosEvent());

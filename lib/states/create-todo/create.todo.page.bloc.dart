@@ -24,7 +24,10 @@ class CreatePageBloc extends Bloc<CreatePageEvent, CreatePageState> {
       final errorOrTodos = await createTodoUseCase(param: event.todoEntity);
       yield errorOrTodos.fold(
         (error) => CreatePageTodoError(error: error),
-        (todo) => CreatePageTodoCreated(todo: todo),
+        (todo) {
+          print('Hier $todo');
+          return CreatePageTodoCreated(todo: todo);
+        },
       );
     }
   }

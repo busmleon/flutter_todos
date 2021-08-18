@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todos/core/localizator.dart';
 import 'package:flutter_todos/features/todos/entities/todo.entity.dart';
-import 'package:flutter_todos/features/todos/models/todo.model.dart';
 import 'package:flutter_todos/pages/widgets/material/my.circular.progress.indicator.widget.dart';
 import 'package:flutter_todos/pages/widgets/material/my.elevated.button.dart';
 import 'package:flutter_todos/states/create-todo/create.todo.page.bloc.dart';
