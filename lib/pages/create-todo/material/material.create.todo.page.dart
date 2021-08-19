@@ -6,21 +6,9 @@ import '../../widgets/material/my.circular.progress.indicator.widget.dart';
 import '../../widgets/material/my.elevated.button.dart';
 import '../../../states/create-todo/create.todo.page.bloc.dart';
 
-class MaterialCreatePage extends StatefulWidget {
-  const MaterialCreatePage({Key key}) : super(key: key);
-
-  @override
-  _MaterialCreatePageState createState() => _MaterialCreatePageState();
-}
-
-class _MaterialCreatePageState extends State<MaterialCreatePage> {
-  TextEditingController createTodoController = new TextEditingController();
-  TodoEntity todoEntity;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+class MaterialCreatePage extends StatelessWidget {
+  final TextEditingController createTodoController = TextEditingController();
+  MaterialCreatePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,11 +58,8 @@ class _MaterialCreatePageState extends State<MaterialCreatePage> {
               ),
             ),
             MyElevatedButton(
-              onPressed: () {
-                todoEntity = new TodoEntity(
-                    description: createTodoController.value.text);
-                createTodo(context, todoEntity);
-              },
+              onPressed: () =>
+                  createTodo(context, createTodoController.value.text),
               text: Localizator.of(context)
                   .translate('create_page_create_todo_button'),
             ),
@@ -84,7 +69,7 @@ class _MaterialCreatePageState extends State<MaterialCreatePage> {
     );
   }
 
-  createTodo(BuildContext context, TodoEntity todoEntity) =>
-      BlocProvider.of<CreatePageBloc>(context)
-          .add(CreateTodoPageEvent(todoEntity: todoEntity));
+  createTodo(BuildContext context, String description) =>
+      BlocProvider.of<CreatePageBloc>(context).add(CreateTodoPageEvent(
+          todoEntity: new TodoEntity(description: description)));
 }

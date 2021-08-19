@@ -32,6 +32,7 @@ Future<void> init() async {
   injector.registerLazySingleton<AbstractGetTodosDataSource>(
       () => GetTodosDataSource(firestore: injector()));
   // () => MockGetTodosDataSource());
+
   //! Feature: CreateTodo
   //* State
   injector.registerLazySingleton(

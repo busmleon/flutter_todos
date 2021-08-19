@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_todos/core/errors.dart';
 import 'package:flutter_todos/features/todos/create/use-case/abstract.create.todo.use.case.dart';
@@ -49,9 +48,12 @@ void main() {
       //! arrange
       when(createTodoUseCase(param: mockTodoEntity))
           .thenAnswer((_) async => Right(fixture));
-      final expected = CreatePageTodoCreated(todo: fixture);
+      final expected = [
+        const CreatePageTodoLoading(),
+        CreatePageTodoCreated(todo: fixture)
+      ];
       //! assert later
-      expectLater(bloc.stream, emits(expected));
+      expectLater(bloc.stream, emitsInOrder(expected));
       //! act
       bloc.add(CreateTodoPageEvent(todoEntity: mockTodoEntity));
     });
@@ -60,9 +62,12 @@ void main() {
       //! arrange
       when(createTodoUseCase(param: mockTodoEntity))
           .thenAnswer((_) async => Left(const CreateTodoError()));
-      final expected = const CreatePageTodoError(error: CreateTodoError());
+      final expected = const [
+        CreatePageTodoLoading(),
+        CreatePageTodoError(error: CreateTodoError())
+      ];
       //! assert later
-      expectLater(bloc.stream, emits(expected));
+      expectLater(bloc.stream, emitsInOrder(expected));
       //! act
       bloc.add(CreateTodoPageEvent(todoEntity: mockTodoEntity));
     });

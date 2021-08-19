@@ -11,6 +11,7 @@ class CreateTodoUseCase implements AbstractCreateTodoUseCase {
       : assert(repository != null);
 
   @override
-  Future<Either<AbstractError, TodoEntity>> call({TodoEntity param}) =>
+  Future<Either<AbstractError, TodoEntity>> call(
+          {@required TodoEntity param}) =>
       this.repository.createTodo(param);
 }
