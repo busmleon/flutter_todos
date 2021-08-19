@@ -4,11 +4,11 @@ import 'package:flutter_todos/core/errors.dart';
 import 'package:flutter_todos/features/todos/get/data-source/abstract.get.todos.data.source.dart';
 import 'package:flutter_todos/features/todos/get/entities/todo.list.entity.dart';
 import 'package:flutter_todos/features/todos/get/models/todo.list.model.dart';
-import 'package:flutter_todos/features/todos/models/todo.model.dart';
 import 'package:flutter_todos/features/todos/get/repository/abstract.get.todos.repository.dart';
 import 'package:flutter_todos/features/todos/get/repository/get.todos.repository.dart';
 import 'package:flutter_todos/features/todos/get/use-case/abstract.get.todos.use.case.dart';
 import 'package:flutter_todos/features/todos/get/use-case/get.todos.use.case.dart';
+import 'package:flutter_todos/features/todos/models/todo.model.dart';
 import 'package:mockito/mockito.dart';
 
 class _MockGetTodosDataSource extends Mock
@@ -38,7 +38,7 @@ void main() {
     );
     when(dataSource.getTodos()).thenAnswer((_) async => fixture);
     //! act
-    final result = await useCase();
+    final result = await useCase.execute();
     //! assert
     expect(result, Right(TodoListEntity.fromModel(fixture)));
     verify(dataSource.getTodos());
@@ -52,7 +52,7 @@ void main() {
     );
     when(dataSource.getTodos()).thenAnswer((_) async => fixture);
     //! act
-    final result = await useCase();
+    final result = await useCase.execute();
     //! assert
     expect(result, Right(TodoListEntity.fromModel(fixture)));
     verify(dataSource.getTodos());
@@ -63,7 +63,7 @@ void main() {
     //! arrange
     when(dataSource.getTodos()).thenAnswer((_) async => null);
     //! act
-    final result = await useCase();
+    final result = await useCase.execute();
     //! assert
     expect(result.isLeft(), true);
     result.fold((l) => expect(l, isA<GetTodosError>()), (r) => null);
@@ -76,7 +76,7 @@ void main() {
     //! arrange
     when(dataSource.getTodos()).thenThrow(() => Exception());
     //! act
-    final result = await useCase();
+    final result = await useCase.execute();
     //! assert
     expect(result.isLeft(), true);
     result.fold((l) => expect(l, isA<GetTodosError>()), (r) => null);

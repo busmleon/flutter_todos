@@ -23,7 +23,8 @@ class CreatePageBloc extends Bloc<CreatePageEvent, CreatePageState> {
   ) async* {
     if (event is CreateTodoPageEvent) {
       yield const CreatePageTodoLoading();
-      final errorOrTodos = await createTodoUseCase(param: event.todoEntity);
+      final errorOrTodos =
+          await createTodoUseCase.execute(param: event.todoEntity);
       yield errorOrTodos.fold(
         (error) => CreatePageTodoError(error: error),
         (todo) => CreatePageTodoCreated(todo: todo),

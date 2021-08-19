@@ -34,19 +34,19 @@ void main() {
 
     test('should create use case with data', () async {
       //! arrange
-      when(createTodoUseCase(param: mockTodoEntity))
+      when(createTodoUseCase.execute(param: mockTodoEntity))
           .thenAnswer((_) async => Right(fixture));
       //! act
       bloc.add(CreateTodoPageEvent(todoEntity: mockTodoEntity));
       //! assert
-      await untilCalled(createTodoUseCase(param: mockTodoEntity));
+      await untilCalled(createTodoUseCase.execute(param: mockTodoEntity));
     });
 
     test(
         'should emit CreatePageTodoCreated when todos are created successfully',
         () {
       //! arrange
-      when(createTodoUseCase(param: mockTodoEntity))
+      when(createTodoUseCase.execute(param: mockTodoEntity))
           .thenAnswer((_) async => Right(fixture));
       final expected = [
         const CreatePageTodoLoading(),
@@ -60,7 +60,7 @@ void main() {
 
     test('should emit CreatePageTodoError when creating todo fails', () {
       //! arrange
-      when(createTodoUseCase(param: mockTodoEntity))
+      when(createTodoUseCase.execute(param: mockTodoEntity))
           .thenAnswer((_) async => Left(const CreateTodoError()));
       final expected = const [
         CreatePageTodoLoading(),

@@ -8,4 +8,5 @@ import '../entities/todo.list.entity.dart';
 abstract class AbstractGetTodosUseCase extends AbstractUseCase<AbstractEntity,
     Future<Either<AbstractError, TodoListEntity>>> {
   const AbstractGetTodosUseCase();
+  Future<Either<AbstractError, TodoListEntity>> execute({AbstractEntity param});
 }

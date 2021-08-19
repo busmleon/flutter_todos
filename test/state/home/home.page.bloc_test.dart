@@ -34,18 +34,18 @@ void main() {
 
     test('should get data from use case', () async {
       //! arrange
-      when(getTodosUseCase()).thenAnswer((_) async => Right(fixture));
+      when(getTodosUseCase.execute()).thenAnswer((_) async => Right(fixture));
       //! act
       bloc.add(const HomePageGetTodosEvent());
       //! assert
-      await untilCalled(getTodosUseCase());
+      await untilCalled(getTodosUseCase.execute());
     });
 
     test(
         'should emit [HomePageLoading, HomePageLoaded] when todos are gotten successfully',
         () {
       //! arrange
-      when(getTodosUseCase()).thenAnswer((_) async => Right(fixture));
+      when(getTodosUseCase.execute()).thenAnswer((_) async => Right(fixture));
       final expected = [
         const HomePageGetTodosLoading(),
         HomePageGetTodosLoaded(todos: fixture),
@@ -62,7 +62,7 @@ void main() {
         'should emit [HomePageLoading, HomePageError] when getting todos fails',
         () {
       //! arrange
-      when(getTodosUseCase())
+      when(getTodosUseCase.execute())
           .thenAnswer((_) async => Left(const GetTodosError()));
       final expected = const [
         HomePageGetTodosLoading(),

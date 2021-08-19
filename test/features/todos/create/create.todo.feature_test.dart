@@ -31,7 +31,8 @@ void main() {
     final mockTodoModel = const TodoModel(description: 'Todo 1');
     when(dataSource.createTodo(mockTodoModel)).thenAnswer((_) async => fixture);
     //! act
-    final result = await useCase(param: TodoEntity.fromModel(mockTodoModel));
+    final result =
+        await useCase.execute(param: TodoEntity.fromModel(mockTodoModel));
     //! assert
     expect(result, Right(TodoEntity.fromModel(fixture)));
     verify(dataSource.createTodo(mockTodoModel));
@@ -40,7 +41,7 @@ void main() {
 
   test('should return InvalidInputError when TodoEntity is null', () async {
     //! act
-    final result = await useCase.call(param: null);
+    final result = await useCase.execute(param: null);
     //! assert
     expect(result.isLeft(), true);
     result.fold((l) => expect(l, isA<InvalidInputError>()), (r) => null);
@@ -50,7 +51,7 @@ void main() {
     //! arrange
     final fixture = const TodoEntity(description: null);
     //! act
-    final result = await useCase.call(param: fixture);
+    final result = await useCase.execute(param: fixture);
     //! assert
     expect(result.isLeft(), true);
     result.fold((l) => expect(l, isA<InvalidInputError>()), (r) => null);
@@ -63,7 +64,8 @@ void main() {
     final mockTodoModel = const TodoModel(description: 'Todo 1');
     when(dataSource.createTodo(mockTodoModel)).thenAnswer((_) async => null);
     //! act
-    final result = await useCase(param: TodoEntity.fromModel(mockTodoModel));
+    final result =
+        await useCase.execute(param: TodoEntity.fromModel(mockTodoModel));
     //! assert
     expect(result.isLeft(), true);
     result.fold((l) => expect(l, isA<CreateTodoError>()), (r) => null);
@@ -79,7 +81,8 @@ void main() {
     final mockTodoModel = const TodoModel(description: 'Todo 1');
     when(dataSource.createTodo(mockTodoModel)).thenAnswer((_) async => fixture);
     //! act
-    final result = await useCase(param: TodoEntity.fromModel(mockTodoModel));
+    final result =
+        await useCase.execute(param: TodoEntity.fromModel(mockTodoModel));
     //! assert
     expect(result.isLeft(), true);
     result.fold((l) => expect(l, isA<CreateTodoError>()), (r) => null);
@@ -95,7 +98,8 @@ void main() {
     final mockTodoModel = const TodoModel(description: 'Todo 1');
     when(dataSource.createTodo(mockTodoModel)).thenAnswer((_) async => fixture);
     //! act
-    final result = await useCase(param: TodoEntity.fromModel(mockTodoModel));
+    final result =
+        await useCase.execute(param: TodoEntity.fromModel(mockTodoModel));
     //! assert
     expect(result.isLeft(), true);
     result.fold((l) => expect(l, isA<CreateTodoError>()), (r) => null);
@@ -108,7 +112,8 @@ void main() {
     final mockTodoModel = const TodoModel(description: 'Todo 1');
     when(dataSource.createTodo(mockTodoModel)).thenThrow(() => Exception());
     //! act
-    final result = await useCase(param: TodoEntity.fromModel(mockTodoModel));
+    final result =
+        await useCase.execute(param: TodoEntity.fromModel(mockTodoModel));
     //! assert
     expect(result.isLeft(), true);
     result.fold((l) => expect(l, isA<CreateTodoError>()), (r) => null);

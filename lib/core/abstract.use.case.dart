@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+
 import 'entities/abstract.entity.dart';
 import 'errors.dart';
 
@@ -8,5 +9,5 @@ abstract class AbstractUseCase<I extends AbstractEntity,
   const AbstractUseCase();
 
   // O Rückgabewert (Output) - I (Input) Eingabewert
-  O call({@required I param});
+  O execute({@required I param});
 }
