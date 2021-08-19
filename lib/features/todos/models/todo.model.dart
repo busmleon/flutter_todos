@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../entities/todo.entity.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../core/models/abstract.model.dart';
+import '../../../core/models/abstract.model.dart';
+import '../entities/todo.entity.dart';
 
 class TodoModel extends AbstractModel {
   final String id;
@@ -11,7 +11,13 @@ class TodoModel extends AbstractModel {
   const TodoModel({
     this.id,
     @required this.description,
-  }) : assert(description != null);
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'description': description,
+    };
+  }
 
   factory TodoModel.fromFirestoreDocument(
           QueryDocumentSnapshot<Map<String, dynamic>> document) =>
@@ -19,9 +25,10 @@ class TodoModel extends AbstractModel {
         id: document.id,
         description: document.data()['description'] ?? '',
       );
+
   factory TodoModel.fromEntity(TodoEntity todoEntity) =>
       TodoModel(id: todoEntity.id, description: todoEntity.description);
 
   @override
-  List<Object> get props => [this.id];
+  List<Object> get props => [this.id, this.description];
 }

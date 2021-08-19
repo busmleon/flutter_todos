@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
 import '../models/todo.list.model.dart';
-import '../models/todo.model.dart';
+import '../../models/todo.model.dart';
 import 'abstract.get.todos.data.source.dart';
 
 class GetTodosDataSource implements AbstractGetTodosDataSource {

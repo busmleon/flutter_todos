@@ -4,7 +4,7 @@ import 'package:flutter_todos/core/errors.dart';
 import 'package:flutter_todos/features/todos/get/data-source/abstract.get.todos.data.source.dart';
 import 'package:flutter_todos/features/todos/get/entities/todo.list.entity.dart';
 import 'package:flutter_todos/features/todos/get/models/todo.list.model.dart';
-import 'package:flutter_todos/features/todos/get/models/todo.model.dart';
+import 'package:flutter_todos/features/todos/models/todo.model.dart';
 import 'package:flutter_todos/features/todos/get/repository/abstract.get.todos.repository.dart';
 import 'package:flutter_todos/features/todos/get/repository/get.todos.repository.dart';
 import 'package:flutter_todos/features/todos/get/use-case/abstract.get.todos.use.case.dart';
@@ -66,10 +66,7 @@ void main() {
     final result = await useCase();
     //! assert
     expect(result.isLeft(), true);
-    result.fold((l) {
-      expect(l, isA<DataSourceError>());
-      expect(l.message, 'No todos could be received.');
-    }, (r) => null);
+    result.fold((l) => expect(l, isA<GetTodosError>()), (r) => null);
     verify(dataSource.getTodos());
     verifyNoMoreInteractions(dataSource);
   });
@@ -82,7 +79,7 @@ void main() {
     final result = await useCase();
     //! assert
     expect(result.isLeft(), true);
-    result.fold((l) => expect(l, isA<DataSourceError>()), (r) => null);
+    result.fold((l) => expect(l, isA<GetTodosError>()), (r) => null);
     verify(dataSource.getTodos());
     verifyNoMoreInteractions(dataSource);
   });

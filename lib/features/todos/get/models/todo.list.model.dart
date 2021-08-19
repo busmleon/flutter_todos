@@ -1,8 +1,8 @@
-import '../entities/todo.list.entity.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../core/models/abstract.model.dart';
-import 'todo.model.dart';
+import '../../models/todo.model.dart';
+import '../entities/todo.list.entity.dart';
 
 class TodoListModel extends AbstractModel {
   final List<TodoModel> items;

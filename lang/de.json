@@ -2,6 +2,11 @@
   "home_page_title": "Startseite",
   "home_page_getting_todos_failed": "Fehler beim Laden der Todos.",
   "home_page_get_todos_button": "Todos laden",
+  "create_page_title": "Todo anlegen",
+  "create_page_creating_todo_error": "Todo anlegen fehlgeschlagen",
+  "create_page_create_todo_button": "Todo anlegen",
+  "create_page_creating_todo_succeeded": "Todo anlegen erfolgreich",
+  "create_page_todo_hint_text": "Todo eingeben",
   "error_route_title": "Falsche Route",
   "error_route_text": "Beim Navigieren auf eine Seite ist ein Fehler aufgetreten."
 }

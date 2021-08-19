@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/localizator.dart';
 import '../../../states/home/home.page.bloc.dart';
+import '../../widgets/cupertino/my.cupertino.activity.indicator.dart';
+import '../../widgets/cupertino/my.cupertino.button.dart';
 import '../widgets/todo.list.widget.dart';
-import 'widgets/my.cupertino.activity.indicator.dart';
-import 'widgets/my.cupertino.button.dart';
 
 class CupertinoHomePage extends StatelessWidget {
   const CupertinoHomePage({Key key}) : super(key: key);

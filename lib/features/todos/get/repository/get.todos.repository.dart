@@ -16,12 +16,12 @@ class GetTodosRepository implements AbstractGetTodosRepository {
     try {
       final todoListModel = await this.dataSource.getTodos();
       if (todoListModel?.items == null)
-        throw DataSourceError(message: 'No todos could be received.');
+        throw const GetTodosError(message: 'No todos could be received.');
       return Right(TodoListEntity.fromModel(todoListModel));
     } on AbstractError catch (error) {
       return Left(error);
     } catch (error) {
-      return Left(DataSourceError(message: error.toString()));
+      return Left(GetTodosError(message: error.toString()));
     }
   }
 }

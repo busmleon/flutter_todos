@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../pages/home/cupertino/cupertino.home.page.dart';
 
+import '../pages/create-todo/material/material.create.todo.page.dart';
+import '../pages/home/cupertino/cupertino.home.page.dart';
 import '../pages/home/material/material.home.page.dart';
+import '../states/create-todo/create.todo.page.bloc.dart';
 import '../states/home/home.page.bloc.dart';
 import 'dependency.injector.dart';
 
@@ -12,6 +14,14 @@ class MyRouter {
   static Route<MaterialPageRoute> generateMaterialRoute(
       RouteSettings settings) {
     switch (settings.name) {
+      case '/createPage':
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => BlocProvider(
+            create: (_) => injector<CreatePageBloc>(),
+            child: MaterialCreatePage(),
+          ),
+        );
       case '/':
       default:
         return MaterialPageRoute(
@@ -27,6 +37,14 @@ class MyRouter {
   static Route<CupertinoPageRoute> generateCupertinoRoute(
       RouteSettings settings) {
     switch (settings.name) {
+      // case '/createPage':
+      //   return MaterialPageRoute(
+      //     settings: settings,
+      //     builder: (_) => BlocProvider(
+      //       create: (_) => injector<CreatePageBloc>(),
+      //       child: const MaterialCreatePage(),
+      //     ),
+      //   );
       case '/':
       default:
         return CupertinoPageRoute(

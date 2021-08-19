@@ -1,5 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+import '../features/todos/create/data-source/abstract-create.todo.data.source.dart';
+import '../features/todos/create/data-source/create.todo.data.source.dart';
+import '../features/todos/create/repository/abstract.create.todo.repository.dart';
+import '../features/todos/create/repository/create.todo.repository.dart';
+import '../features/todos/create/use-case/abstract.create.todo.use.case.dart';
+import '../features/todos/create/use-case/create.todo.use.case.dart';
+import '../states/create-todo/create.todo.page.bloc.dart';
 import '../features/todos/get/data-source/get.todos.data.source.dart';
 import 'package:get_it/get_it.dart';
 
@@ -14,7 +20,8 @@ final injector = GetIt.instance;
 Future<void> init() async {
   //! Feature: GetTodos
   //* State
-  injector.registerFactory(() => HomePageBloc(getTodosUseCase: injector()));
+  injector
+      .registerLazySingleton(() => HomePageBloc(getTodosUseCase: injector()));
   //* Use Case
   injector.registerLazySingleton<AbstractGetTodosUseCase>(
       () => GetTodosUseCase(repository: injector()));
@@ -24,9 +31,22 @@ Future<void> init() async {
   //* Data Source
   injector.registerLazySingleton<AbstractGetTodosDataSource>(
       () => GetTodosDataSource(firestore: injector()));
-  //     () => MockGetTodosDataSource(firestore: injector()));
-  //* Firebase Firestore
+  // () => MockGetTodosDataSource());
+
+  //! Feature: CreateTodo
+  //* State
+  injector.registerLazySingleton(
+      () => CreatePageBloc(createTodoUseCase: injector()));
+  //* Use Case
+  injector.registerLazySingleton<AbstractCreateTodoUseCase>(
+      () => CreateTodoUseCase(repository: injector()));
+  //* Repository
+  injector.registerLazySingleton<AbstractCreateTodoRepository>(
+      () => CreateTodoRepository(dataSource: injector()));
+  //* Data Source
+  injector.registerLazySingleton<AbstractCreateTodoDataSource>(
+      () => CreateTodoDataSource(firestore: injector()));
+  //! External APIs
   injector.registerLazySingleton<FirebaseFirestore>(
       () => FirebaseFirestore.instance);
-  await Firebase.initializeApp();
 }
