@@ -53,7 +53,7 @@ void main() {
       //! assert later
       expectLater(bloc.stream, emits(expected));
       //! act
-      bloc.add(CreateTodoPageEvent(todoEntity: fixture));
+      bloc.add(CreateTodoPageEvent(todoEntity: mockTodoEntity));
     });
 
     test('should emit CreatePageTodoError when creating todo fails', () {
