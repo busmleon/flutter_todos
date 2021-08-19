@@ -14,14 +14,6 @@ class MyRouter {
   static Route<MaterialPageRoute> generateMaterialRoute(
       RouteSettings settings) {
     switch (settings.name) {
-      case '/':
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (_) => BlocProvider(
-            create: (_) => injector<HomePageBloc>(),
-            child: const MaterialHomePage(),
-          ),
-        );
       case '/createPage':
         return MaterialPageRoute(
           settings: settings,
@@ -30,6 +22,7 @@ class MyRouter {
             child: const MaterialCreatePage(),
           ),
         );
+      case '/':
       default:
         return MaterialPageRoute(
           settings: settings,
@@ -44,15 +37,6 @@ class MyRouter {
   static Route<CupertinoPageRoute> generateCupertinoRoute(
       RouteSettings settings) {
     switch (settings.name) {
-      case '/':
-        return CupertinoPageRoute(
-          settings: settings,
-          title: 'Home',
-          builder: (_) => BlocProvider(
-            create: (_) => injector<HomePageBloc>(),
-            child: const CupertinoHomePage(),
-          ),
-        );
       case '/createPage':
         return MaterialPageRoute(
           settings: settings,
@@ -61,6 +45,7 @@ class MyRouter {
             child: const MaterialCreatePage(),
           ),
         );
+      case '/':
       default:
         return CupertinoPageRoute(
           settings: settings,
